@@ -5,7 +5,7 @@
 
 namespace options {
 
-	unsigned long int sleep_time = 3000;
+	unsigned long int sleep_time = 5000;
 
 	double rounder = 1000.0;
 
