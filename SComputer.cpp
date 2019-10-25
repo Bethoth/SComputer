@@ -428,7 +428,31 @@ int main() {
 					std::cin >> searched;
 					std::cin >> side1;
 					std::cin >> side2;
-					if (searched == "hypotenuse") {
+					double bigger, lower;
+					if (maths::is_bigger(side1, side2)) {
+						bigger = side1;
+						lower = side2;
+					}
+					else {
+						bigger = side2;
+						lower = side1;
+					}
+					if (searched == "other") {
+						std::cout << "Let ABC be a rectangular triangle in A. Let us admit that [AB] is the searched side. According to Pythagore's theorem, we have:"
+							<< std::endl
+							<< "BC^2 = AB^2 + AC^2"
+							<< std::endl
+							<< bigger << "^2 = " << "AB^2 + " << lower << "^2"
+							<< std::endl
+							<< "AB^2 = " << bigger << "^2 - " << lower << "^2"
+							<< std::endl
+							<< "AB^2 = " << std::pow(bigger, 2) - std::pow(lower, 2)
+							<< std::endl
+							<< "AB = " << "sqrt(" << std::pow(bigger, 2) - std::pow(lower, 2) << ")"
+							<< std::endl
+							<< "AB = " << theorems::pythagore(searched, side1, side2);
+					}
+					else if (searched == "hypotenuse") {
 						std::cout << "Let ABC be a rectangular triangle in A. According to Pythagore's theorem, we have:"
 							<< std::endl
 							<< "BC^2 = AB^2 + AC^2"
