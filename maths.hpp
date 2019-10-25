@@ -48,7 +48,7 @@ namespace maths {
 	std::array<std::string, 2> comparisons = { "Inferiority test", "Superiority test" };
 	int comparisons_size = std::tuple_size<std::array<std::string, 2>>::value;
 
-	long double pi = 3.14159265358979323846L;
+	const long double pi = 3.14159265358979323846L;
 
 	std::array<std::string, 6> figures = { "Addition", "Subtraction", "Multiplication", "Division", "Modulo", "Comparison" };
 	int figures_size = std::tuple_size<std::array<std::string, 6>>::value;
