@@ -419,6 +419,31 @@ int main() {
 				for (int i = 0; i < theorems::figures_size; ++i) {
 					std::cout << i + 1 << ". " << theorems::figures[i] << std::endl;
 				}
+				std::cin >> choice;
+				if (choice == "1") {
+					clear();
+					std::cout << "You chose " << theorems::figures[0] << ". At first, enter 'hypotenuse' or 'other' depending on the side you are looking for. Then enter the lengths of the two other sides." << std::endl;
+					std::string searched;
+					double side1, side2;
+					std::cin >> searched;
+					std::cin >> side1;
+					std::cin >> side2;
+					if (searched == "hypotenuse") {
+						std::cout << "Let ABC be a rectangular triangle in A. According to Pythagore's theorem, we have:"
+							<< std::endl
+							<< "BC^2 = AB^2 + AC^2"
+							<< std::endl
+							<< "BC^2 = " << side1 << "^2 + " << side2 << "^2"
+							<< std::endl
+							<< "BC^2 = " << std::pow(side1, 2) << " + " << std::pow(side2, 2)
+							<< std::endl
+							<< "BC^2 = " << std::pow(side1, 2) + std::pow(side2, 2)
+							<< std::endl
+							<< "BC = " << "sqrt(" << std::pow(side1, 2) + std::pow(side2, 2) << ")"
+							<< std::endl
+							<< "BC = " << theorems::pythagore(searched, side1, side2);
+					}
+				}
 			}
 		}
 		
