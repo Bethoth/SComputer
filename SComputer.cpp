@@ -181,21 +181,21 @@ int main() {
 					double length, width;
 					std::cin >> length;
 					std::cin >> width;
-					std::cout << "P = 2 * " << length << " + 2 * " << width << " = " << perimeter::rectangle(length, width) << std::endl;
+					std::cout << "P = 2 * " << length << " + 2 * " << width << " = " << perimeter::rectangle(length, width) << options::length_unit << std::endl;
 				}
 				else if (choice == "2") {
 					clear();
 					std::cout << "You chose " << perimeter::figures[1] << ". Enter the length of one side of your figure." << std::endl;
 					double side;
 					std::cin >> side;
-					std::cout << "P = 4 * " << side << " = " << perimeter::square(side) << std::endl;
+					std::cout << "P = 4 * " << side << " = " << perimeter::square(side) << options::length_unit << std::endl;
 				}
 				else if (choice == "3") {
 					clear();
 					std::cout << "You chose " << perimeter::figures[2] << ". Enter the length of the radius of your figure." << std::endl;
 					double radius;
 					std::cin >> radius;
-					std::cout << "P = 2 * pi * " << radius << " = " << perimeter::circle(radius) << std::endl;
+					std::cout << "P = 2 * pi * " << radius << " = " << perimeter::circle(radius) << options::length_unit << std::endl;
 				}
 				else if (choice == "4") {
 					clear();
@@ -203,7 +203,7 @@ int main() {
 					double length, width;
 					std::cin >> length;
 					std::cin >> width;
-					std::cout << "P = 2 * " << length << " + 2 * " << width << " = " << perimeter::parallelogram(length, width) << std::endl;
+					std::cout << "P = 2 * " << length << " + 2 * " << width << " = " << perimeter::parallelogram(length, width) << options::length_unit << std::endl;
 				}
 				else if (choice == "5") {
 					clear();
@@ -214,7 +214,7 @@ int main() {
 					std::cin >> side2;
 					auto perimeter = perimeter::triangle(base, side1, side2);
 					if (perimeter.has_value()) {
-						std::cout << "P = " << base << " + " << side1 << " + " << side2 << " = " << *perimeter << std::endl;
+						std::cout << "P = " << base << " + " << side1 << " + " << side2 << " = " << *perimeter << options::length_unit << std::endl;
 					}
 					else {
 						std::cout << "This triangle cannot exist. Learn about triangle inequalities." << std::endl;
@@ -228,14 +228,14 @@ int main() {
 					std::cin >> base2;
 					std::cin >> side1;
 					std::cin >> side2;
-					std::cout << "P = " << base1 << " + " << base2 << " + " << side1 << " + " << side2 << " = " << perimeter::trapeze(base1, base2, side1, side2) << std::endl;
+					std::cout << "P = " << base1 << " + " << base2 << " + " << side1 << " + " << side2 << " = " << perimeter::trapeze(base1, base2, side1, side2) << options::length_unit << std::endl;
 				}
 				else if (choice == "7") {
 					clear();
 					std::cout << "You chose " << perimeter::figures[6] << ". Enter the length of a side of your figure." << std::endl;
 					double side;
 					std::cin >> side;
-					std::cout << "P = 4 * " << side << " = " << perimeter::diamond(side) << std::endl;
+					std::cout << "P = 4 * " << side << " = " << perimeter::diamond(side) << options::length_unit << std::endl;
 				}
 			}
 			else if (choice == "2") {
@@ -251,21 +251,21 @@ int main() {
 					double length, width;
 					std::cin >> length;
 					std::cin >> width;
-					std::cout << "A = " << length << " * " << width << " = " << area::rectangle(length, width) << std::endl;
+					std::cout << "A = " << length << " * " << width << " = " << area::rectangle(length, width) << options::area_unit << std::endl;
 				}
 				else if (choice == "2") {
 					clear();
 					std::cout << "You chose " << area::figures[1] << ". Enter the length of one side of your figure." << std::endl;
 					double side;
 					std::cin >> side;
-					std::cout << "A = " << side << "^2 = " << area::square(side) << std::endl;
+					std::cout << "A = " << side << "^2 = " << area::square(side) << options::area_unit << std::endl;
 				}
 				else if (choice == "3") {
 					clear();
 					std::cout << "You chose " << area::figures[2] << ". Enter the length of the radius of your figure." << std::endl;
 					double radius;
 					std::cin >> radius;
-					std::cout << "A = pi * " << radius << "^2 = " << area::disk(radius) << std::endl;
+					std::cout << "A = pi * " << radius << "^2 = " << area::disk(radius) << options::area_unit << std::endl;
 				}
 				else if (choice == "4") {
 					clear();
@@ -273,7 +273,7 @@ int main() {
 					double base, height;
 					std::cin >> base;
 					std::cin >> height;
-					std::cout << "A = " << base << " * " << height << " = " << area::parallelogram(base, height) << std::endl;
+					std::cout << "A = " << base << " * " << height << " = " << area::parallelogram(base, height) << options::area_unit << std::endl;
 				}
 				else if (choice == "5") {
 					clear();
@@ -281,7 +281,7 @@ int main() {
 					double base, height;
 					std::cin >> base;
 					std::cin >> height;
-					std::cout << "A = " << base << " * " << height << " / 2 = " << area::triangle(base, height) << std::endl;
+					std::cout << "A = " << base << " * " << height << " / 2 = " << area::triangle(base, height) << options::area_unit << std::endl;
 				}
 				else if (choice == "6") {
 					clear();
@@ -290,7 +290,7 @@ int main() {
 					std::cin >> base1;
 					std::cin >> base2;
 					std::cin >> height;
-					std::cout << "A = (" << base1 << " + " << base2 << ") * " << height << " / 2 = " << area::trapeze(base1, base2, height) << std::endl;
+					std::cout << "A = (" << base1 << " + " << base2 << ") * " << height << " / 2 = " << area::trapeze(base1, base2, height) << options::area_unit << std::endl;
 				}
 				else if (choice == "7") {
 					clear();
@@ -298,14 +298,14 @@ int main() {
 					double diagonal1, diagonal2;
 					std::cin >> diagonal1;
 					std::cin >> diagonal2;
-					std::cout << "A = " << diagonal1 << " * " << diagonal2 << " / 2 = " << area::diamond(diagonal1, diagonal2) << std::endl;
+					std::cout << "A = " << diagonal1 << " * " << diagonal2 << " / 2 = " << area::diamond(diagonal1, diagonal2) << options::area_unit << std::endl;
 				}
 				else if (choice == "8") {
 					clear();
 					std::cout << "You chose " << area::figures[7] << ". Enter the length of the radius of your figure." << std::endl;
 					double radius;
 					std::cin >> radius;
-					std::cout << "A = pi * 4 * " << radius << "^2 = " << area::sphere(radius) << std::endl;
+					std::cout << "A = pi * 4 * " << radius << "^2 = " << area::sphere(radius) << options::area_unit << std::endl;
 				}
 				else if (choice == "9") {
 					clear();
@@ -313,14 +313,14 @@ int main() {
 					double radius, height;
 					std::cin >> radius;
 					std::cin >> height;
-					std::cout << "A = pi * " << radius << " * sqrt(" << radius << "^2 + " << height << "^2) = " << area::cone(radius, height) << std::endl;
+					std::cout << "A = pi * " << radius << " * sqrt(" << radius << "^2 + " << height << "^2) = " << area::cone(radius, height) << options::area_unit << std::endl;
 				}
 				else if (choice == "10") {
 					clear();
 					std::cout << "You chose " << area::figures[9] << ". Enter the length of one edge of your figure." << std::endl;
 					double edge;
 					std::cin >> edge;
-					std::cout << "A = 6 * " << edge << "^2 = " << area::cube(edge) << std::endl;
+					std::cout << "A = 6 * " << edge << "^2 = " << area::cube(edge) << options::area_unit << std::endl;
 				}
 				else if (choice == "11") {
 					clear();
@@ -329,7 +329,7 @@ int main() {
 					std::cin >> length;
 					std::cin >> width;
 					std::cin >> height;
-					std::cout << "A = (2 * " << length << " * " << width << ") + (2 * " << length << " * " << height << ") + (2 * " << width << " * " << height << ") = " << area::rectangle_cuboid(length, width, height) << std::endl;
+					std::cout << "A = (2 * " << length << " * " << width << ") + (2 * " << length << " * " << height << ") + (2 * " << width << " * " << height << ") = " << area::rectangle_cuboid(length, width, height) << options::area_unit << std::endl;
 				}
 				else if (choice == "12") {
 					clear();
@@ -337,7 +337,7 @@ int main() {
 					double radius, height;
 					std::cin >> radius;
 					std::cin >> height;
-					std::cout << "A = 2 * pi * " << radius << " * " << height << " = " << area::cylinder(radius, height) << std::endl;
+					std::cout << "A = 2 * pi * " << radius << " * " << height << " = " << area::cylinder(radius, height) << options::area_unit << std::endl;
 				}
 				else if (choice == "13") {
 					clear();
@@ -345,7 +345,7 @@ int main() {
 					double side, height;
 					std::cin >> side;
 					std::cin >> height;
-					std::cout << "A = 4 * " << side << " * sqrt(" << height << "^2 + (" << side << " / 2)^2) / 2" << " = " << area::square_based_pyramid(side, height) << std::endl;
+					std::cout << "A = 4 * " << side << " * sqrt(" << height << "^2 + (" << side << " / 2)^2) / 2" << " = " << area::square_based_pyramid(side, height) << options::area_unit << std::endl;
 				}
 			}
 			else if (choice == "3") {
@@ -360,7 +360,7 @@ int main() {
 					std::cout << "You chose " << volume::figures[0] << ". Enter the length of one edge of your figure." << std::endl;
 					double edge;
 					std::cin >> edge;
-					std::cout << "V = " << edge << "^3 = " << volume::cube(edge) << std::endl;
+					std::cout << "V = " << edge << "^3 = " << volume::cube(edge) << options::volume_unit << std::endl;
 				}
 				else if (choice == "2") {
 					clear();
@@ -369,7 +369,7 @@ int main() {
 					std::cin >> length;
 					std::cin >> width;
 					std::cin >> height;
-					std::cout << "V = " << length << " * " << width << " * " << height << " = " << volume::rectangleCuboid(length, width, height) << std::endl;
+					std::cout << "V = " << length << " * " << width << " * " << height << " = " << volume::rectangleCuboid(length, width, height) << options::volume_unit << std::endl;
 				}
 				else if (choice == "3") {
 					clear();
@@ -377,7 +377,7 @@ int main() {
 					double radius, height;
 					std::cin >> radius;
 					std::cin >> height;
-					std::cout << "V = pi" << " * " << radius << "^2 * " << height << " = " << volume::cylinder(radius, height) << std::endl;
+					std::cout << "V = pi" << " * " << radius << "^2 * " << height << " = " << volume::cylinder(radius, height) << options::volume_unit << std::endl;
 				}
 				else if (choice == "4") {
 					clear();
@@ -385,7 +385,7 @@ int main() {
 					double radius, height;
 					std::cin >> radius;
 					std::cin >> height;
-					std::cout << "V = pi" << " * " << radius << "^2 * " << height << " / 3 = " << volume::cone(radius, height) << std::endl;
+					std::cout << "V = pi" << " * " << radius << "^2 * " << height << " / 3 = " << volume::cone(radius, height) << options::volume_unit << std::endl;
 				}
 				else if (choice == "5") {
 					clear();
@@ -393,7 +393,7 @@ int main() {
 					double side, height;
 					std::cin >> side;
 					std::cin >> height;
-					std::cout << "V = " << side << "^2 * " << height << " / 3 = " << volume::squareBasedPyramid(side, height) << std::endl;
+					std::cout << "V = " << side << "^2 * " << height << " / 3 = " << volume::squareBasedPyramid(side, height) << options::volume_unit << std::endl;
 				}
 				else if (choice == "6") {
 					clear();
@@ -402,17 +402,16 @@ int main() {
 					std::cin >> length;
 					std::cin >> width;
 					std::cin >> height;
-					std::cout << "V = " << length << " * " << width << " * " << height << " / 3 = " << volume::rectangleBasedPyramid(length, width, height) << std::endl;
+					std::cout << "V = " << length << " * " << width << " * " << height << " / 3 = " << volume::rectangleBasedPyramid(length, width, height) << options::volume_unit << std::endl;
 				}
 				else if (choice == "7") {
 					clear();
 					std::cout << "You chose " << volume::figures[6] << ". Enter the length of the radius of your figure." << std::endl;
 					double radius;
 					std::cin >> radius;
-					std::cout << "V = 4/3 * pi * " << radius << "^3 = " << volume::sphere(radius) << std::endl;
+					std::cout << "V = 4/3 * pi * " << radius << "^3 = " << volume::sphere(radius) << options::volume_unit << std::endl;
 				}
 			}
-
 			else if (choice == "4") {
 				clear();
 				std::cout << "You chose " << maths::geometry_choices[3] << ". Choose your way." << std::endl;
@@ -450,7 +449,7 @@ int main() {
 							<< std::endl
 							<< "AB = " << "sqrt(" << std::pow(bigger, 2) - std::pow(lower, 2) << ")"
 							<< std::endl
-							<< "AB = " << theorems::pythagore(searched, side1, side2);
+							<< "AB = " << theorems::pythagore(searched, side1, side2) << options::length_unit;
 					}
 					else if (searched == "hypotenuse") {
 						std::cout << "Let ABC be a rectangular triangle in A. According to Pythagore's theorem, we have:"
@@ -465,7 +464,7 @@ int main() {
 							<< std::endl
 							<< "BC = " << "sqrt(" << std::pow(side1, 2) + std::pow(side2, 2) << ")"
 							<< std::endl
-							<< "BC = " << theorems::pythagore(searched, side1, side2);
+							<< "BC = " << theorems::pythagore(searched, side1, side2) << options::length_unit;
 					}
 				}
 			}
@@ -504,6 +503,46 @@ int main() {
 					std::cout << "Core value: " << 1000.0 << std::endl;
 					std::cout << "Actual value: " << options::rounder << std::endl;
 					std::cin >> options::rounder;
+				}
+			}
+			else if (choice == "3") {
+				clear();
+				std::cout << "You chose " << options::options[2] << ". Choose your way." << std::endl;
+				for (int i = 0; i < options::units_size; ++i) {
+					std::cout << i + 1 << ". " << options::units[i] << std::endl;
+				}
+				std::cin >> choice;
+				if (choice == "1") {
+					clear();
+					std::cout << "You chose " << options::units[0] << "." << std::endl;
+					std::cout << "Core value: cm" << std::endl;
+					std::cout << "Actual value: " << options::length_unit << std::endl;
+					std::cout << "Enter the unit you want the lengths to be set to." << std::endl;
+					std::cin >> options::length_unit;
+				}
+				else if (choice == "2") {
+					clear();
+					std::cout << "You chose " << options::units[1] << "." << std::endl;
+					std::cout << "Core value: cm^2" << std::endl;
+					std::cout << "Actual value: " << options::area_unit << std::endl;
+					std::cout << "Enter the unit you want the areas to be set to." << std::endl;
+					std::cin >> options::area_unit;
+				}
+				else if (choice == "3") {
+					clear();
+					std::cout << "You chose " << options::units[2] << "." << std::endl;
+					std::cout << "Core value: cm^3" << std::endl;
+					std::cout << "Actual value: " << options::volume_unit << std::endl;
+					std::cout << "Enter the unit you want the volumes to be set to." << std::endl;
+					std::cin >> options::volume_unit;
+				}
+				else if (choice == "4") {
+					clear();
+					std::cout << "You chose " << options::units[3] << "." << std::endl;
+					std::cout << "Core value: kg/cm^3" << std::endl;
+					std::cout << "Actual value: " << options::voluminal_mass_unit << std::endl;
+					std::cout << "Enter the unit you want the voluminal masses to be set to." << std::endl;
+					std::cin >> options::voluminal_mass_unit;
 				}
 			}
 		}
