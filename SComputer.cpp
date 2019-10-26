@@ -12,6 +12,7 @@
 #include "area.hpp"
 #include "volume.hpp"
 #include "theorems.hpp"
+#include "physic.hpp"
 #include "options.hpp"
 
 void clear() {
@@ -50,8 +51,8 @@ void clear() {
 	SetConsoleCursorPosition(hStdOut, homeCoords);
 }
 
-std::array<std::string, 3> main_menu_possibilities = { "Algebra", "Geometry", "Options" };
-int main_menu_possibilities_size = std::tuple_size<std::array<std::string, 3>>::value;
+std::array<std::string, 4> main_menu_possibilities = { "Algebra", "Geometry", "Physic", "Options" };
+int main_menu_possibilities_size = std::tuple_size<std::array<std::string, 4>>::value;
 
 int main() {
 	std::cout << "Welcome in the SComputer. Press Enter to access to menu." << std::endl;
@@ -470,9 +471,9 @@ int main() {
 			}
 		}
 		
-		else if (choice == "3") {
+		else if (choice == "4") {
 			clear();
-			std::cout << "You chose " << main_menu_possibilities[2] << ". Choose your way. (enter the number of the thing you need and press Enter)" << std::endl;
+			std::cout << "You chose " << main_menu_possibilities[3] << ". Choose your way." << std::endl;
 			for (int i = 0; i < options::options_size; ++i) {
 				std::cout << i + 1 << ". " << options::options[i] << std::endl;
 			}
@@ -543,6 +544,46 @@ int main() {
 					std::cout << "Actual value: " << options::voluminal_mass_unit << std::endl;
 					std::cout << "Enter the unit you want the voluminal masses to be set to." << std::endl;
 					std::cin >> options::voluminal_mass_unit;
+				}
+				else if (choice == "5") {
+					clear();
+					std::cout << "You chose " << options::units[4] << "." << std::endl;
+					std::cout << "Core value: g" << std::endl;
+					std::cout << "Actual value: " << options::mass_unit << std::endl;
+					std::cout << "Enter the unit you want the masses to be set to." << std::endl;
+					std::cin >> options::mass_unit;
+				}
+			}
+		}
+
+		else if (choice == "3") {
+			clear();
+			std::cout << "You chose " << main_menu_possibilities[2] << ". Choose your way." << std::endl;
+			for (int i = 0; i < physic::figures_size; ++i) {
+				std::cout << i + 1 << ". " << physic::figures[i] << std::endl;
+			}
+			std::cin >> choice;
+			if (choice == "1") {
+				clear();
+				std::cout << "You chose " << physic::figures[0] << ". The input order is the following : rho ; mass ; volume. Enter the values you know and 'searched' for the value you don't know." << std::endl;
+				std::string rho, mass, volume;
+				std::cin >> rho;
+				std::cin >> mass;
+				std::cin >> volume;
+				auto result = physic::voluminal_mass(rho, mass, volume);
+				if (result.has_value()) {
+					if (rho == "searched") {
+						std::cout << "rho = m / V = " << mass << " / " << volume << " = " << *result << options::voluminal_mass_unit << std::endl;
+					}
+					else if (mass == "searched") {
+						std::cout << "m = rho * V = " << rho << " * " << volume << " = " << *result << options::mass_unit << std::endl;
+					}
+					else if (volume == "searched") {
+						std::cout << "V = m / rho = " << mass << " / " << rho << " = " << *result << options::volume_unit << std::endl;
+					}
+				}
+				else {
+					std::cout << "You entered too much 'searched' values." << std::endl;
 				}
 			}
 		}
