@@ -487,7 +487,7 @@ int main() {
 				}
 				else if (choice == "2") {
 					std::cout << "This option has to be set in miliseconds. For example, 3 seconds = 3000 miliseconds." << std::endl;
-					std::cout << "Core value: " << 3000 << std::endl;
+					std::cout << "Core value: " << 5000 << std::endl;
 					std::cout << "Actual value: " << options::sleep_time << std::endl;
 					std::cin >> options::sleep_time;
 				}
@@ -500,7 +500,7 @@ int main() {
 					std::cout << "This option represents the number of decimal digits to which the various results will be rounded." << std::endl;
 				}
 				else if (choice == "2") {
-					std::cout << "This option has to be set like this : if you want 3 decimal digits, set this option to 1000,0 (but put a dot for the coma)." << std::endl;
+					std::cout << "This option has to be set like this : if you want 3 decimal digits, set this option to options::rounder,0 (but put a dot for the coma)." << std::endl;
 					std::cout << "Core value: " << 1000.0 << std::endl;
 					std::cout << "Actual value: " << options::rounder << std::endl;
 					std::cin >> options::rounder;
@@ -553,6 +553,14 @@ int main() {
 					std::cout << "Enter the unit you want the masses to be set to." << std::endl;
 					std::cin >> options::mass_unit;
 				}
+				else if (choice == "6") {
+					clear();
+					std::cout << "You chose " << options::units[5] << "." << std::endl;
+					std::cout << "Core value: N" << std::endl;
+					std::cout << "Actual value: " << options::gravitational_force_unit << std::endl;
+					std::cout << "Enter the unit you want the gravitational forces to be set to." << std::endl;
+					std::cin >> options::gravitational_force_unit;
+				}
 			}
 		}
 
@@ -583,7 +591,34 @@ int main() {
 					}
 				}
 				else {
-					std::cout << "You entered too much 'searched' values." << std::endl;
+					std::cout << "You entered too many 'searched' values." << std::endl;
+				}
+			}
+			else if (choice == "2") {
+				clear();
+				std::cout << "You chose " << physic::figures[1] << ". The input order is the following : F ; mass_a ; mass_b ; distance_ab. Enter the values you know and enter 'searched' for the value you don't know." << std::endl;
+				std::string F, mass_a, mass_b, distance;
+				std::cin >> F;
+				std::cin >> mass_a;
+				std::cin >> mass_b;
+				std::cin >> distance;
+				auto result = physic::gravitational_force(F, mass_a, mass_b, distance);
+				if (result.has_value()) {
+					if (F == "searched") {
+						std::cout << "F = G * (m_a * m_b) / d^2 = G * (" << mass_a << " * " << mass_b << ") / " << distance << "^2 = " << *result << options::gravitational_force_unit << std::endl;
+					}
+					else if (mass_a == "searched") {
+						std::cout << "m_A = (F * d^2) / (G * m_B) = (" << F << " * " << distance << "^2) / (G * " << mass_b << ") = " << *result << options::mass_unit << std::endl;
+					}
+					else if (mass_b == "searched") {
+						std::cout << "m_B = (F * d^2) / (G * m_A) = (" << F << " * " << distance << "^2) / (G * " << mass_a << ") = " << *result << options::mass_unit << std::endl;
+					}
+					else if (distance == "searched") {
+						std::cout << "d = sqrt((G * m_A * m_B) / F) = sqrt((G * " << mass_a << " * " << mass_b << ") / " << F << " = " << *result << options::length_unit << std::endl;
+					}
+				}
+				else {
+					std::cout << "You entered too many 'searched' values" << std::endl;
 				}
 			}
 		}
